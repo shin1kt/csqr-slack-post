@@ -41,10 +41,10 @@ class CsqrPost():
             for item in list2:
                 # 時間が見つからないときはスルー
                 date = item.find_elements_by_css_selector('.c-updater__date')
-                if date is None or len(date) == 0: 
+                if date is not list or len(date) == 0: 
                     continue
                 dateStr = date[0].text
-                # 新しいデータのみ
+                # 新しいデータのみ取得
                 if '秒前' in dateStr or '分前' in dateStr or '時間前' in dateStr:
                     h2tag = item.find_element_by_tag_name('h2')
                     text += '■' + h2tag.text + '\n'
