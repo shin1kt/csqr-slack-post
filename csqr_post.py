@@ -45,7 +45,7 @@ class CsqrPost():
                     continue
                 dateStr = date[0].text
                 # 新しいデータのみ取得
-                if '秒前' in dateStr or '分前' in dateStr or '時間前' in dateStr:
+                if '秒前' in dateStr or '分前' in dateStr:
                     h2tag = item.find_element_by_tag_name('h2')
                     text += '■' + h2tag.text + '\n'
                     text += dateStr + '\n'
