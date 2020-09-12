@@ -2,6 +2,7 @@ import chromedriver_binary
 from selenium import webdriver
 import requests
 import json
+import datetime
 
 #main class
 class CsqrPost():
@@ -37,11 +38,15 @@ class CsqrPost():
 
             # 投稿テキスト組み立て
             is_post = False
-            text = '本日のタイムライン\n\n'
+
+            now = datetime.datetime.now()
+            title = now.strftime('%Y年%m月%d日%H時')
+
+            text = title + 'のタイムライン\n\n'
             for item in list2:
                 # 時間が見つからないときはスルー
                 date = item.find_elements_by_css_selector('.c-updater__date')
-                if date is not list or len(date) == 0: 
+                if len(date) == 0: 
                     continue
                 dateStr = date[0].text
                 # 新しいデータのみ取得
