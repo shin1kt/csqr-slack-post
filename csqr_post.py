@@ -39,7 +39,9 @@ class CsqrPost():
             # 投稿テキスト組み立て
             is_post = False
 
-            now = datetime.datetime.now()
+            now = datetime.datetime.now(
+                datetime.timezone(datetime.timedelta(hours=9))
+            )
             title = now.strftime('%Y年%m月%d日%H時')
 
             text = title + 'のタイムライン\n\n'
